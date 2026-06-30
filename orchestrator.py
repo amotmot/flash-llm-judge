@@ -1,22 +1,15 @@
 """Judge orchestrator: CPU endpoint that coordinates the LLM-judge flow.
 
-Pattern A (queue-based, CPU). Receives a prompt, fans it out to vllm-alpha
-and vllm-beta in parallel, then asks vllm-judge to pick the more accurate
-response and explain why.
+Receives a prompt, fans it out to vllm-alpha and vllm-beta in parallel,
+then asks vllm-judge to pick the more accurate response and explain why.
 
 Runs on CPU because the heavy lifting (generation) happens on the three
-GPU endpoints — this worker just coordinates.
+GPU endpoints. This worker just coordinates.
 
-The three GPU endpoints (vllm-alpha, vllm-beta, vllm-judge) are Pattern D
-image-based endpoints deployed in the same Flash app. Their endpoint IDs
-are passed via environment variables so this orchestrator can construct
+GPU endpoint IDs are passed via environment variables so this orchestrator can construct
 Endpoint(id=...) clients at runtime. Find the IDs after deploy with:
 
     flash env get production
-
-Then set them on the orchestrator endpoint (via the RunPod console or
-by re-deploying with updated env). For local testing, set them in your
-shell before running this script.
 
 Input payload:
     {

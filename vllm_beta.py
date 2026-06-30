@@ -1,6 +1,6 @@
 """Inference endpoint B
 
-Serves Microsoft's Phi-4 — a 14B-parameter text-only model.
+Serves Microsoft's Phi-4. A 14B-parameter text-only model.
 BF16 weights (~28GB) require a 48GB GPU to leave room for KV cache.
 This runs on an L40 (ADA_48_PRO).
 """

@@ -8,10 +8,6 @@ At 27B parameters, this judge is larger than both candidates (Qwen3-4B and
 Phi-4 14B), giving it the capacity to reliably detect factual errors and
 avoid verbosity bias.
 
-> **Image note:** Qwen3.6 requires vLLM >= 0.19.0. The runpod worker-vllm
-> v2.22.4 image may be too old. If the worker crashes on startup, switch
-> to `vllm/vllm-openai:latest` (same approach as the Gemma 4 endpoint).
-
 Qwen3.6 thinks by default (outputs `<think>...</think>` blocks before the
 answer). The orchestrator's _parse_verdict handles this by stripping
 non-JSON content and extracting the verdict via regex fallback.

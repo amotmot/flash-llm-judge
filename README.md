@@ -1,4 +1,4 @@
-# Runpod Runpod LLM-as-a-Judge
+# Runpod Flash LLM-as-a-Judge
 
 Two vLLM inference endpoints serve different models. A third, larger vLLM
 endpoint acts as an **LLM judge**: it receives both candidate answers and
